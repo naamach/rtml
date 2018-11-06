@@ -1,4 +1,5 @@
 from distutils.core import setup
+import setuptools
 
 setup(name='rtml',
       version='0.1.0',
@@ -8,7 +9,7 @@ setup(name='rtml',
       long_description=open('README.md').read(),
       url='https://github.com/naamach/rtml',
       license='LICENSE.txt',
-      py_modules=['rtml'],
+      packages=setuptools.find_packages(),
       install_requires=['lxml', 'configparser'],
       classifiers=[
           'Development Status :: 4 - Beta',
