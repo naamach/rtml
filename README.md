@@ -130,3 +130,6 @@ from schedulertml import parse_config
 parse_config
 ```
 
+### Creating Complex Plan
+
+Use the `schedulertml.rtml` methods following the above conventions, to add more requests, targets, and pictures.
