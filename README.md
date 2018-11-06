@@ -1,4 +1,4 @@
-# rtml
+# ScheduleRTML
 
 Write Remote Telescope Markup Language (RTML) XML files to be read by [ACP Scheduler](http://scheduler.dc3.com/).
 ACP Scheduler is a commercial tool used to automatically schedule and execute observing plans for telescopes.
@@ -17,19 +17,15 @@ The `rtml` package allows you to automatically write these RTML plans.
 
 Create and activate a `conda` environment with the necessary modules:
 ```
-$ conda create -p /path/to/rtml python=2.7 lxml configparser
-$ source activate /path/to/rtml
+$ conda create -n schedulertml python=2.7 lxml configparser
+$ source activate schedulertml
 ```
-Clone the `rtml` repository:
+Install the `schedulertml` package:
 ```
-$ git clone https://github.com/naamach/rtml.git
-```
-Enter the `rtml` folder and run:
-```
-$ python setup.py install
+$ pip install git+https://github.com/naamach/schedulertml.git
 ```
 
-## Using `rtml`
+## Using `ScheduleRTML`
 
 ## The ACP Scheduler RTML Schema
 
