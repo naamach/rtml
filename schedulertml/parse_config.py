@@ -13,7 +13,7 @@ request = {
     'imageset_count': '1',
     'imageset_description': '',
     'imageset_dither': None,
-    'imageset_exptime': 5,
+    'imageset_exptime': '5',
     'imageset_filter': '',
     'imageset_limiting_mag': None,
     'imageset_solve': True,

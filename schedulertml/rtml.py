@@ -81,7 +81,7 @@ def add_request(root, request_id, bestefforts="True", user="New Observer", descr
     return root
 
 
-def add_target(root, request_id, ra, dec, name, description="", count=1, interval=None, tolerance=None, autofocus="",
+def add_target(root, request_id, ra, dec, name, description="", count="1", interval=None, tolerance=None, autofocus="",
                position_angle=None):
     req = root.find("./Request[ID='{}']".format(request_id))
 
@@ -113,7 +113,7 @@ def add_target(root, request_id, ra, dec, name, description="", count=1, interva
     return root
 
 
-def add_picture(root, filt, target_name, exptime=5, solve=True, binning="1", description="", count=1, autostack=False,
+def add_picture(root, filt, target_name, exptime="5", solve=True, binning="1", description="", count="1", autostack=False,
                 lim_mag=None, dither=None):
     target = root.find("./Request/Target[Name='{}']".format(target_name))
 
