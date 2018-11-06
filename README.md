@@ -63,7 +63,7 @@ rtml.write(root, "NewPlan.xml")
 
 ### Creating a Simple Plan Using `parse_config`
 
-The `parse_config` module helps you to create an RTML plan with all available observing constraints, for a single target, defined in a configuration text file called `config.ini`.
+The `parse_config` script helps you to create an RTML plan with all available observing constraints, for a single target, defined in a configuration text file called `config.ini`.
 
 Create a `config.ini` file, and save it in your work directory. Adjust the parameters according to your needs. Parameters that are left blank or omitted will be assigned with the default values:
 
@@ -130,6 +130,6 @@ from schedulertml import parse_config
 parse_config
 ```
 
-### Creating Complex Plan
+### Creating a Complex Plan
 
 Use the `schedulertml.rtml` methods following the above conventions, to add more requests, targets, and pictures.
