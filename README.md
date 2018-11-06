@@ -3,7 +3,7 @@
 Write Remote Telescope Markup Language (RTML) XML files to be read by [ACP Scheduler](http://scheduler.dc3.com/).
 ACP Scheduler is a commercial tool used to automatically schedule and execute observing plans for telescopes.
 The observing plans can be entered manually using the Scheduler's GUI, or imported from RTML files.
-The `rtml` package allows you to automatically write these RTML plans.
+The `schedulrtml` package allows you to automatically write these RTML plans.
 
 ## Getting started
 
