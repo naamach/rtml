@@ -10,7 +10,7 @@ setup(name='schedulertml',
       url='https://github.com/naamach/schedulertml',
       license='LICENSE.txt',
       packages=setuptools.find_packages(),
-      install_requires=['lxml', 'configparser'],
+      install_requires=['lxml', 'configparser', 'datetime'],
       classifiers=[
           'Development Status :: 4 - Beta',
           'Environment :: Console',

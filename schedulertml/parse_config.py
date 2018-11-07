@@ -43,11 +43,12 @@ request = {
     'plan_priority': None,
     'plan_sky_condition': '',
     'plan_start_now': 'False',
+    'plan_user': 'New Observer',
     'project_description': '',
     'project_email': 'observer@example.com',
     'project_name': '',
     'project_organization': None,
-    'project_user': 'New Observer'
+    'project_pi': 'New Observer'
 }
 
 for key in request.iterkeys():
@@ -57,14 +58,14 @@ for key in request.iterkeys():
         if config.get(section, keyword)[0] != ';':
             request[key] = config.get(section, keyword)
 
-root = rtml.init(name=request['project_user'],
+root = rtml.init(name=request['project_pi'],
                  email=request['project_email'],
                  organization=request['project_organization'])
 
 root = rtml.add_request(root,
                         request_id=request['plan_name'],
                         bestefforts=request['plan_bestefforts'],
-                        user=request['project_user'],
+                        user=request['plan_user'],
                         description=request['plan_description'],
                         project=request['project_name'],
                         airmass=request['plan_airmass'],

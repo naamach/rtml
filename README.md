@@ -70,56 +70,57 @@ Create a `config.ini` file, and save it in your work directory. Adjust the param
 ```
 ; config.ini
 [GENERAL]
-PATH = 
-FILENAME = 
+PATH = 				; path of the output plan file, default: current directory
+FILENAME =  			; output plan file name, default: current timestamp (YYYYMMDD_hhmmss.xml)
 
 [PROJECT]
-USER = New Observer
-EMAIL = observer@example.com
-ORGANIZATION = 
-DESCRIPTION = 
-NAME = Project name
+PI = New Observer 		; PI's name, for contact, default: New Observer
+EMAIL = observer@example.com 	; PI's email, default: observer@example.com
+ORGANIZATION = 			; PI's organization, default: empty
+DESCRIPTION = 			; project description, default: empty
+NAME = Project name 		; project name, default: empty
 
 [PLAN]
-BESTEFFORTS = 1
-NAME = Plan1
-AIRMASS = 
-AIRMASS_MIN = 1.02  ; the shutter blocks the CCD above 80deg
-AIRMASS_MAX = 3
-HORIZON = ; min elevation (integer)
-HOURANGLE_MIN = -4.6
-HOURANGLE_MAX = 4.6
-SKY_CONDITION = ; Excellent, Good, Fair, Poor
-MOON_DOWN = ; True
-MOON_DIST = 
-MOON_WIDTH = 
-START_NOW = True
-EARLIEST = 
-LATEST = 
-PRIORITY = 
-DESCRIPTION = 
+USER = New Observer	; ACP Scheduler observer name, default: New Observer
+BESTEFFORTS = 1 	; best efforts. 1 - execute plan as long as the constraints are met, 0 - execute only if the plan can be completed within the constraints. default: 1
+NAME = Plan1 		; plan's name, default: empty
+AIRMASS = 		; maximal airmass limit (to be used with no minimal airmass limit), default: empty
+AIRMASS_MIN = 1.02  	; minimal airmass limit, together with AIRMASS_MAX, default: empty
+AIRMASS_MAX = 3 	; maximal airmass limit, together with AIRMASS_MIN, default: empty
+HORIZON = 		; min elevation (integer), default: empty
+HOURANGLE_MIN = -4.6 	; eastern hour angle limit, together with HOURANGLE_MAX, deafult: empty
+HOURANGLE_MAX = 4.6 	; western hour angle limit, together with HOURANGLE_MIN, deafult: empty
+SKY_CONDITION = 	; sky condition (Excellent, Good, Fair, Poor), deafult: empty
+MOON_DOWN = 		; moon down (True/False), default: empty
+MOON_DIST = 		; moon distance. needs to be set together with MOON_WIDTH, default: empty
+MOON_WIDTH = 		; moon width. needs to be set together with MOON_DIST, default: empty
+START_NOW = 		; if True - start plan immediately. default: empty
+EARLIEST = 		; earliest observing date (format: 0001-01-01T00:00:00), default: empty
+LATEST = 		; latest observing date (format: 0001-01-01T00:00:00), default: empty
+PRIORITY = 		; plan priority
+DESCRIPTION = 		; plan description
 
 [OBSERVATION]
-COUNT = 1
-INTERVAL = ; [hr]
-TOLERANCE =  ; [hr]
-AUTOFOCUS = 
-NAME = Target1
-DESCRIPTION = 
-RA = 50.123
-DEC = +30.123
-POSITION_ANGLE = 
+NAME = Target1		; observation name, default: empty
+COUNT = 1		; observation count (how many times to repeat), default: 1
+INTERVAL = 		; observation interval (between repeats) in hours. default: empty
+TOLERANCE =  		; observation interval's tolerance (between repeats) in hours. default: empty
+AUTOFOCUS = 		; perform autofocus before executing the observation, default: empty
+DESCRIPTION = 		; observation description, default: empty
+RA = 50.123		; target's RA, in deg, default: empty
+DEC = +30.123		; target's Dec, in deg, default: empty
+POSITION_ANGLE = 	; position angle, default: empty
 
 [IMAGESET]
-COUNT = 1
-AUTOSTACK = ; False
-SOLVE = True
-DESCRIPTION = 
-EXPTIME = 300 ; [s]
-LIMITING_MAG = 
-BINNING = 1
-FILTER = ExoP
-DITHER = ; (0 - no dither, -1 - auto)
+COUNT = 1		; imageset count (how many times to repeat), default: 1
+AUTOSTACK = 		; stack imageset automatically (True/False), default: empty
+SOLVE = True		; astrometrically solve the images (True/False), default: True
+DESCRIPTION = 		; imageset description
+EXPTIME = 300 		; imageset exposure time in seconds, default: 5. Use either EXPTIME or LIMITING_MAG. If both are included, use LIMITING_MAG.
+LIMITING_MAG = 		; imageset limiting magnitude, default: empty. Use either EXPTIME or LIMITING_MAG. If both are included, use LIMITING_MAG.
+BINNING = 1		; imageset binning, default: 1
+FILTER = ExoP		; imageset filter, default: empty
+DITHER = 		; dither telescope between exposures (0 - no dither, -1 - auto), deafult: empty
 ```
 
 In python, run:
