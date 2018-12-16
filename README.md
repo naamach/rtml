@@ -9,7 +9,7 @@ The `ScheduleRTML` package allows you to automatically write these RTML plans.
 
 ### Prerequisites
 
-* `python 2.7`
+* `python 2.7` or above
 * `lxml`
 * `configparser`
 
@@ -17,7 +17,7 @@ The `ScheduleRTML` package allows you to automatically write these RTML plans.
 
 Create and activate a `conda` environment with the necessary modules:
 ```
-$ conda create -n schedulertml python=2.7 lxml configparser
+$ conda create -n schedulertml lxml configparser
 $ source activate schedulertml
 ```
 Install the `ScheduleRTML` package:

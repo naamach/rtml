@@ -1,7 +1,7 @@
-import ConfigParser
+from configparser import ConfigParser
 import rtml
 
-config = ConfigParser.ConfigParser()
+config = ConfigParser()
 config.read('config.ini')
 
 # default field values
