@@ -76,6 +76,7 @@ def add_request(root, request_id, bestefforts="True", user="New Observer", descr
 
     # priority
     if priority:
+        etree.SubElement(etree.SubElement(schedule, "Airmass"), "Value").text = airmass
         etree.SubElement(schedule, "Priority").text = priority
 
     return root
@@ -152,30 +153,26 @@ def write(root, filename):
     return
 
 
-def import_to_scheduler(filename, username, remote_host, remote_path):
+def import_to_remote_scheduler(filename, username, remote_host, remote_path, cygwin_path="C:\\cygwin64\\home\\"):
+    from remote import copy_file_to_remote_host, execute_over_ssh
 
-    # from Naked.toolshed.shell import execute_js, muterun_js
-    # import sys
-    # from subprocess import call
+    # copy the plan file to the remote machine
+    copy_file_to_remote_host(filename, username, remote_host, remote_path)
 
-    f = open('import.js', 'w')
-    f.write('// JavaScript (JScript)\n')
-    f.write('var DB = new ActiveXObject("DC3.Scheduler.Database");\n')
-    f.write('DB.Connect();\n')
-    f.write('var I = new ActiveXObject("DC3.RTML23.Importer");\n')
-    f.write('I.DB = DB;\n')
-    f.write('I.Import("{}");\n'.format(filename))
-    f.write('DB.Disconnect();\n')
+    # create VBScript to import the plan to the Scheduler database
+    f = open("import.vbs", "w")
+    f.write("'VBScript\n")
+    f.write("Dim I, DB\n")
+    f.write("Set DB = CreateObject(""DC3.Scheduler.Database"")\n")
+    f.write("Call DB.Connect()\n")
+    f.write("Set I = CreateObject(""DC3.RTML23.Importer"")\n")
+    f.write("Set I.DB = DB\n")
+    f.write("I.Import ""{}""\n".format([cygwin_path, filename]))
+    f.write("Call DB.Disconnect()\n")
     f.close()
 
-    # # copy the plan file and import script to the remote machine
-    # call('rsync -av {} {}@{}:{}'.format(filename, username, remote_host, remote_path))
-    #
-    # # import the RTML file to the Scheduler database on the remote machine
-    # response = muterun_js('import.js')
-    # if response.exitcode == 0:
-    #     print(response.stdout)
-    # else:
-    #     sys.stderr.write(response.stderr)
+    # import the RTML file to the Scheduler database on the remote machine
+    copy_file_to_remote_host('import.vbs', username, remote_host, remote_path)
+    execute_over_ssh("cscript import.vbs", username, remote_host)
 
     return
