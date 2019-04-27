@@ -170,7 +170,7 @@ def import_to_remote_scheduler(filename, username, remote_host, remote_path, cyg
     f.write("Call DB.Connect()\n")
     f.write("Set I = CreateObject(""DC3.RTML23.Importer"")\n")
     f.write("Set I.DB = DB\n")
-    f.write("I.Import ""{}""\n".format(cygwin_path + filename.split(os.sep)[-1]))
+    f.write("""I.Import "{}"\n""".format(cygwin_path + filename.split(os.sep)[-1]))
     f.write("Call DB.Disconnect()\n")
     f.close()
 
@@ -179,6 +179,8 @@ def import_to_remote_scheduler(filename, username, remote_host, remote_path, cyg
     if "ERROR" in result:
         return result
 
-    result = execute_over_ssh("cscript import.vbs", username, remote_host)
+    # use the 64bit version of cscript
+    # https://blogs.msdn.microsoft.com/helloworld/2007/12/12/activex-component-cant-create-object-when-creating-a-32-com-object-in-a-64-bit-machine/
+    result = execute_over_ssh("/cygdrive/c/Windows/SysWOW64/cscript.exe import.vbs", username, remote_host)
 
     return result

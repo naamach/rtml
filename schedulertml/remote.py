@@ -3,11 +3,8 @@ import sys
 
 
 def copy_file_to_remote_host(filename, username, remote_host, remote_path):
-    if not remote_path:
-        ssh_cmd = "{}@{}".format(username, remote_host)
-    else:
-        ssh_cmd = "{}@{}:{}".format(username, remote_host, remote_path)
-    cmd = subprocess.Popen(["rsync", "-ave", "{}".format(filename), ssh_cmd],
+    ssh_cmd = "{}@{}:{}".format(username, remote_host, remote_path)
+    cmd = subprocess.Popen(["scp", "{}".format(filename), ssh_cmd],
                            shell=False,
                            stdout=subprocess.PIPE,
                            stderr=subprocess.PIPE)
