@@ -1,5 +1,5 @@
 from configparser import ConfigParser
-import rtml
+from schedulertml import rtml
 
 config = ConfigParser()
 config.read('config.ini')

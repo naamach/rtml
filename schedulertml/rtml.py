@@ -154,7 +154,7 @@ def write(root, filename):
 
 
 def import_to_remote_scheduler(filename, username, remote_host, remote_path, cygwin_path="C:\\cygwin64\\home\\"):
-    from remote import copy_file_to_remote_host, execute_over_ssh
+    from schedulertml.remote import copy_file_to_remote_host, execute_over_ssh
 
     # copy the plan file to the remote machine
     result = copy_file_to_remote_host(filename, username, remote_host, remote_path)
