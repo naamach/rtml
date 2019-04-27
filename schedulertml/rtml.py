@@ -157,7 +157,9 @@ def import_to_remote_scheduler(filename, username, remote_host, remote_path, cyg
     from remote import copy_file_to_remote_host, execute_over_ssh
 
     # copy the plan file to the remote machine
-    copy_file_to_remote_host(filename, username, remote_host, remote_path)
+    result = copy_file_to_remote_host(filename, username, remote_host, remote_path)
+    if "ERROR" in result:
+        return result
 
     # create VBScript to import the plan to the Scheduler database
     f = open("import.vbs", "w")
@@ -172,7 +174,10 @@ def import_to_remote_scheduler(filename, username, remote_host, remote_path, cyg
     f.close()
 
     # import the RTML file to the Scheduler database on the remote machine
-    copy_file_to_remote_host('import.vbs', username, remote_host, remote_path)
-    execute_over_ssh("cscript import.vbs", username, remote_host)
+    result = copy_file_to_remote_host('import.vbs', username, remote_host, remote_path)
+    if "ERROR" in result:
+        return result
 
-    return
+    result = execute_over_ssh("cscript import.vbs", username, remote_host)
+
+    return result

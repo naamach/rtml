@@ -8,13 +8,13 @@ def copy_file_to_remote_host(filename, username, remote_host, remote_path):
                            stdout=subprocess.PIPE,
                            stderr=subprocess.PIPE)
     result = cmd.stdout.readlines()
-    if result:
+    if not result:
         error = cmd.stderr.readlines()
         print >> sys.stderr, "ERROR: %s".format(error)
+        return error
     else:
         print(result)
-
-    return
+        return result
 
 
 def execute_over_ssh(command, username, remote_host):
@@ -24,10 +24,10 @@ def execute_over_ssh(command, username, remote_host):
                            stdout=subprocess.PIPE,
                            stderr=subprocess.PIPE)
     result = cmd.stdout.readlines()
-    if result:
+    if not result:
         error = cmd.stderr.readlines()
         print >> sys.stderr, "ERROR: %s".format(error)
+        return error
     else:
         print(result)
-
-    return
+        return result
