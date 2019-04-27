@@ -169,7 +169,7 @@ def import_to_remote_scheduler(filename, username, remote_host, remote_path, cyg
     f.write("Call DB.Connect()\n")
     f.write("Set I = CreateObject(""DC3.RTML23.Importer"")\n")
     f.write("Set I.DB = DB\n")
-    f.write("I.Import ""{}""\n".format([cygwin_path, filename]))
+    f.write("I.Import ""{}""\n".format(cygwin_path + filename))
     f.write("Call DB.Disconnect()\n")
     f.close()
 
