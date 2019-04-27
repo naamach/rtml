@@ -12,7 +12,7 @@ def copy_file_to_remote_host(filename, username, remote_host, remote_path):
         error = cmd.stderr.readlines()
         print >> sys.stderr, "ERROR: %s".format(error)
     else:
-        print result
+        print(result)
 
     return
 
@@ -28,6 +28,6 @@ def execute_over_ssh(command, username, remote_host):
         error = cmd.stderr.readlines()
         print >> sys.stderr, "ERROR: %s".format(error)
     else:
-        print result
+        print(result)
 
     return
