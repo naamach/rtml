@@ -14,7 +14,7 @@ def copy_file_to_remote_host(filename, username, remote_host, remote_path):
     result = cmd.stdout.readlines()
     if not result:
         error = cmd.stderr.readlines()
-        print >> sys.stderr, "ERROR: {}".format(error)
+        print("ERROR: {}".format(error))
         return error
     else:
         print(result)
@@ -30,7 +30,7 @@ def execute_over_ssh(command, username, remote_host):
     result = cmd.stdout.readlines()
     if not result:
         error = cmd.stderr.readlines()
-        print >> sys.stderr, "ERROR: %s".format(error)
+        print("ERROR: {}".format(error))
         return error
     else:
         print(result)
