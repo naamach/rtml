@@ -134,3 +134,19 @@ parse_config
 ### Creating a Complex Plan
 
 Use the `schedulertml.rtml` methods following the above conventions, to add more requests, targets, and pictures.
+
+### Uploading the plan to a remote ACP Scheduler server
+
+Assuming ACP Scheduler is installed on a remote Windows host, with `ssh` connection available using `Cygwin`, you can automatically upload and add the RTML plan you created to the ACP Scheduler database, using:
+
+```
+from schedulertml import rtml
+
+rtml.import_to_remote_scheduler("NewPlan.xml",
+                                username="remote_user",
+                                remote_host="remote_host",
+                                remote_path="/home/remote_user/",
+                                cygwin_path="C:\\cygwin64\\home\\remote_user\\")
+```
+
+This will upload to the RTML plan `NewPlan.xml` and a VBScript `import.vbs` to the remote host `remote_user@remote_host`, to the remote `Cygwin` directory `/home/remote_user/`. It will then use the VBScript `import.vbs` to import the new plan (now located at `C:\cygwin64\home\remote_user\`) to the ACP Scheduler database.
