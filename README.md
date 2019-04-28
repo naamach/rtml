@@ -150,3 +150,5 @@ rtml.import_to_remote_scheduler("NewPlan.xml",
 ```
 
 This will upload to the RTML plan `NewPlan.xml` and a VBScript `import.vbs` to the remote host `remote_user@remote_host`, to the remote `Cygwin` directory `/home/remote_user/`. It will then use the VBScript `import.vbs` to import the new plan (now located at `C:\cygwin64\home\remote_user\`) to the ACP Scheduler database.
+
+NOTE: You should first exchange `ssh` keys with the remote server, to allow an `ssh` connection without password prompt. See here for details: https://www.thegeekstuff.com/2011/07/rsync-over-ssh-without-password/
