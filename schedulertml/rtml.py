@@ -76,7 +76,6 @@ def add_request(root, request_id, bestefforts="True", user="New Observer", descr
 
     # priority
     if priority:
-        etree.SubElement(etree.SubElement(schedule, "Airmass"), "Value").text = airmass
         etree.SubElement(schedule, "Priority").text = priority
 
     return root
